@@ -1,0 +1,22 @@
+{% extends('layout.html.twig') %}
+{% block title %}
+    Update Student Record
+{% endblock %}
+
+
+{% block body %}
+    <div class="container">
+        <div class="row bg-info">
+            <div class="col-md-12">
+                <h1 class="text-center">Update Student Record</h1>
+            </div>
+        </div>
+        <div class="row bg-light mt-3">
+            <div class="col-md-6 offset-3">
+{#                {{ dump(student) }}#}
+
+                {{ form(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

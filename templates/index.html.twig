@@ -1,0 +1,68 @@
+{% extends('layout.html.twig') %}
+{% block title %}Student CRUD All Information{% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+{% endblock %}
+{% block body %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <a href="{{ path('create') }}" class="btn btn-lg btn-primary float-right">Add Record</a>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-2">
+        <div class="row">
+            <div class="col-md-12">
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table id="all-records" class="table table-striped table-bordered" style="width:100%">
+                    <thead class="bg-info">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Class</th>
+                        <th>Photo</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for student in students %}
+                        <tr>
+                            <td>{{ student.id }}</td>
+                            <td>{{ student.name }}</td>
+                            <td>{{ student.class }}</td>
+                            <td>
+                                <img src="{{ '/uploads/' ~ student.photo }}" alt="" width="50">
+                            </td>
+                            <td>
+                                <a href="{{ path('show', {id:student.id}) }}" class="btn btn-sm btn-primary">View</a>
+                                <a href="{{ path('edit', {id:student.id}) }}" class="btn btn-sm btn-success">Edit</a>
+                                <a href="{{ path('delete', {id:student.id}) }}" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+<script>
+    $(document).ready(function() {
+    $('#all-records').DataTable();
+} );
+</script>
+{% endblock %}
+

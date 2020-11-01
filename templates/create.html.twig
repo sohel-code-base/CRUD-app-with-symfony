@@ -1,0 +1,20 @@
+{% extends('layout.html.twig') %}
+{% block title %}
+    Add New Student
+{% endblock %}
+
+
+{% block body %}
+<div class="container">
+    <div class="row bg-info">
+        <div class="col-md-12">
+            <h1 class="text-center">Add New Student</h1>
+        </div>
+    </div>
+    <div class="row bg-light mt-3">
+        <div class="col-md-6 offset-3">
+            {{ form(form) }}
+        </div>
+    </div>
+</div>
+{% endblock %}
